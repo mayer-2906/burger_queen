@@ -9,21 +9,21 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { MesasComponent } from './mesas/mesas.component';
 import { CocinaComponent } from './cocina/cocina.component';
-import { OrdenComponent } from './orden/orden.component';
-import { MenuComponent } from './menu/menu.component';
-import { BreakfastComponent } from './menu/breakfast/breakfast.component';
-import { LunchComponent } from './menu/lunch/lunch.component';
-import { MenuModule } from './menu/menu.module';
+//import { OrdenComponent } from './menu/orden/orden.component';
+//import { MenuComponent } from './menu/menu.component';
+//import { BreakfastComponent } from './menu/breakfast/breakfast.component';
+//import { LunchComponent } from './menu/lunch/lunch.component';
+import { MenuModule } from "./menu/menu.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     MesasComponent,
     CocinaComponent,
-    OrdenComponent,
-    MenuComponent,
-    BreakfastComponent,
-    LunchComponent
+    //OrdenComponent,
+    //MenuComponent,
+    //BreakfastComponent,
+    //LunchComponent
   ],
   imports: [
     BrowserModule,

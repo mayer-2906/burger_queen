@@ -26,18 +26,7 @@
   display: flex;
 }
 
-.contenedor_principal{
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2px;
-}
-
 .contenedor_menu{
-  grid-column: 1/2;
-}
-
-.orden{
-  grid-column: 2/3;
-  background-color: var(--primary-oscuro);
-  margin-top: 5px;
+  width: 100%;
+  margin: auto;
 }

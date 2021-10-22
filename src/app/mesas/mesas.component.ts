@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Mesa } from '../interfaces/app.interface'
+import { AppService } from '../services/app.service';
 
 @Component({
   selector: 'app-mesas',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MesasComponent implements OnInit {
 
-  constructor() { }
+  mesas:Mesa[];
+  constructor(private appService: AppService) {
+    this.mesas=this.appService.getMesas();
+   }
 
   ngOnInit(): void {
   }

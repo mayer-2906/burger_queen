@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+//import { CommonModule } from '@angular/common';
 import { BreakfastComponent } from './breakfast/breakfast.component';
 import {LunchComponent} from './lunch/lunch.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MenuComponent } from './menu.component';
 
 const routes: Routes =[
   {
@@ -26,7 +27,7 @@ const routes: Routes =[
 
 @NgModule({
   imports: [
-    CommonModule,
+    //CommonModule,
     RouterModule.forChild(routes)
   ],
   exports:[

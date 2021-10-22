@@ -1,1 +1,8 @@
-<p>mesas works!</p>
+<div class="contenedor_mesas">
+  <ul>
+    <li *ngFor="let mesa of  mesas" routerLink="/menu" routerLinkActive="active">
+      <p>{{mesa.numero | number}}</p>
+      <p>{{mesa.estado | titlecase}}</p>
+    </li>
+  </ul>
+</div>
