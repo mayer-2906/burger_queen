@@ -1,0 +1,90 @@
+{
+  "Lunch": [
+    {
+      "codigo":7,
+      "nombre": "Hamburguesa de Pollo",
+      "precio": 12000,
+      "descripcion": "deliciosa hamburguesa de pollo",
+      "imagen": "../../../assets/burgerPollo.png"
+    },
+    {
+      "codigo":8,
+      "nombre": "Hamburguesa Mixta",
+      "precio": 18000,
+      "descripcion": "deliciosa hamburguesa de pollo y carne tipo Angus",
+      "imagen": "../../../assets/burgerMixtas.png"
+    },
+    {
+      "codigo":9,
+      "nombre": "Hamburguesa Vegana",
+      "precio": 15000,
+      "descripcion": "deliciosa hamburguesa con carne de lentejas y frescas verduras",
+      "imagen": "../../../assets/burgerVegana.png"
+    },
+    {
+      "codigo":10,
+      "nombre": "Cocacola",
+      "precio": 3000,
+      "descripcion": "deliciosa hamburguesa de pollo",
+      "imagen": "../../../assets/cocacola.png"
+    },
+    {
+      "codigo":11,
+      "nombre": "Agua",
+      "precio": 2000,
+      "descripcion": "botella 500ml",
+      "imagen": "../../../assets/agua500ml.png"
+    },
+    {
+      "codigo":12,
+      "nombre": "Agua",
+      "precio": 3500,
+      "descripcion": "botella 1L",
+      "imagen": "../../../assets/agua1L.png"
+    }  
+  ],
+  "breakFast":[
+    {
+      "codigo":1,
+      "nombre": "Sandwich de Pollo",
+      "precio": 8000,
+      "descripcion": "delicioso sandwich de pollo",
+      "imagen": "../../../assets/sandwichPollo.png"
+    },
+    {
+      "codigo":2,
+      "nombre": "Sandwich de Jamón y Queso",
+      "precio": 6000,
+      "descripcion": "Rico sandwich de Jamón de pollo y Queso Doble Crema",
+      "imagen": "../../../assets/sandwichJamonQueso.png"
+    },
+    {
+      "codigo":3,
+      "nombre": "Crepe de Pollo y Queso",
+      "precio": 10000,
+      "descripcion": "delicioso Crepe de Pollo y queso Mozarella en salsa bechamel",
+      "imagen": "../../../assets/crepPolloQueso.png"
+    },
+    {
+      "codigo":4,
+      "nombre": "Jugo Natural",
+      "precio": 4000,
+      "descripcion": "delicioso Jugo de Fruta fresca, en el sabor que desees.",
+      "imagen": "../../../assets/jugoNatural.png"
+    },
+    {
+      "codigo":5,
+      "nombre": "Tinto",
+      "precio": 2000,
+      "descripcion": "Café gourmet",
+      "imagen": "../../../assets/tinto.png"
+    },
+    {
+      "codigo":6,
+      "nombre": "Capuchino",
+      "precio": 4000,
+      "descripcion": "Delicioso café capuchino.",
+      "imagen": "../../../assets/capuchino.jfif"
+    }
+  ]
+}
