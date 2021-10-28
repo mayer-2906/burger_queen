@@ -12,7 +12,7 @@ ul{
 
 li{
   margin-top: 10px;
-  width: 250px;
+  width: 200px;
   height: 150px;
   background-color: var(--primary-claro);
   border: 2px solid var(--primary-oscuro);
@@ -31,4 +31,18 @@ li p{
   color: var(--primary-oscuro);
   font-size: 20px;
   font-weight: bold;
+}
+
+.buttonOrden{
+  margin: auto;
+}
+
+.buttonOrden button{
+  margin: auto;
+  width: 120px;
+  height: 25px;
+  background-color: var(--primary-oscuro);
+  color: white;
+  font-size: 16px;
+  font-style: italic;
 }

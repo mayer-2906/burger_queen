@@ -2,13 +2,15 @@
   <div class="contenedor_principal">
     <div class="opcion_menu">
       <nav>
-        <a routerLink="#/breakfast" routerLinkActive="active" >Breakfast</a>
-        <a routerLink="#/lunch" routerLinkActive="active">Lunch</a>
+        <a (click)="showmenu('b')">Breakfast</a>
+        <a (click)="showmenu('l')">Lunch</a>
       </nav>
       <!--<router-outlet></router-outlet>-->
     </div>
     <div class="contenedor_menu">
-      <router-outlet></router-outlet>
+      <app-breakfast *ngIf="showBreakfast"  (onEventEmitter)=itemAgregar($event)></app-breakfast>
+      <app-lunch *ngIf="!showBreakfast"></app-lunch>
+      <!--<router-outlet></router-outlet>-->
     </div>
   </div>    
   <div class="orden">

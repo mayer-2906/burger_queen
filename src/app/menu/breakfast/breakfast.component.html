@@ -1,1 +1,11 @@
-<p>breakfast works!</p>
+<div class="menu_product">
+  <ul>
+    <li *ngFor="let prod of prodBreakfast">
+      <p>{{ prod.nombre | uppercase }}</p>
+      <img [src]="prod.imagen" alt="producto" />
+      <p class="description">{{ prod.descripcion }}</p>
+      <p class="precio">${{ prod.precio | number }}</p>
+      <button class="addProducto" id="{{ prod.codigo }}" (click)="agregarProducto($event)">Agregar</button>
+    </li>
+  </ul>
+</div>

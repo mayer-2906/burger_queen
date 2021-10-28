@@ -1,1 +1,12 @@
-<p>lunch works!</p>
+<div class="menu_product">
+  <ul >
+    <li class='text' *ngFor='let prod of menuLunch'>
+      <p>{{prod.nombre | uppercase}}</p>    
+      <img [src]="prod.imagen" alt="producto">
+      <p class="description">{{prod.descripcion | titlecase}}</p>
+      <p class="precio">${{prod.precio |number}}</p>
+      <button class="addProducto" id="{{prod.codigo}}">Agregar</button>
+    </li>
+  </ul>
+  
+</div>

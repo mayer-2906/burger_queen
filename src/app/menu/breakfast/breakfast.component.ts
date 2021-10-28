@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AppService } from 'src/app/services/app.service';
+import { Producto } from '../../interfaces/app.interface';
 
 @Component({
   selector: 'app-breakfast',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreakfastComponent implements OnInit {
 
-  constructor() { }
+  prodBreakfast:Producto[];
+  id:number=0;
+  @Output() onEventEmitter: EventEmitter<number> = new EventEmitter();
+  constructor(private service:AppService) {
+    this.prodBreakfast=this.service.getBreakFast();
+  }
 
   ngOnInit(): void {
+  }
+
+  agregarProducto(e:any){
+    this.id=e.target.id;
+    this.onEventEmitter.emit(this.id);   
+    console.log(this.id);
+     
   }
 
 }

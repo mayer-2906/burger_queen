@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { AppService } from '../services/app.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +8,28 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
 
+  @Input() numMesa:number=0;
+  codProduct:number=0;
+  
+  showBreakfast:boolean=true;
 
-  constructor() { }
+  constructor(private service:AppService) { }
 
+  showmenu(id:string){
+    switch(id){
+      case 'b':this.showBreakfast=true;
+                break;
+      case 'l':this.showBreakfast=false;
+                break;
+    }
+    
+  }
+
+  itemAgregar(e:any){
+    console.log("estoy en el menu: ",e);
+    this.codProduct=e;
+    this.service.agregarItem(this.codProduct,1);
+    
+  }
 
 }

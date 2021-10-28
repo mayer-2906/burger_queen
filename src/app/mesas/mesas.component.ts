@@ -9,12 +9,23 @@ import { AppService } from '../services/app.service';
 })
 export class MesasComponent implements OnInit {
 
+  numPrueba:number=4;
   mesas:Mesa[];
   constructor(private appService: AppService) {
     this.mesas=this.appService.getMesas();
    }
 
   ngOnInit(): void {
+  }
+
+  savetable(mesa:number) {
+    localStorage.setItem("numMesa",mesa.toString())
+     this.appService.actualizarEstadoMesa(mesa);
+  }
+
+  consultarOrden(mesa:number){
+    console.log("voy a cosultar la orden");
+    
   }
 
 }

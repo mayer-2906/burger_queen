@@ -1,1 +1,47 @@
-<p>orden works!</p>
+<div class="contenedor_orden">
+  <div class="mesa_numOrden">
+    <div class="mesa">
+      <p>Mesa</p>
+      <p>{{mesa|number}}</p>
+    </div>
+    <div class="numOrden">
+      <p>Pedido</p>
+      <p># {{numOrden|number}}</p>
+    </div>
+  </div>
+  <div class="datos_cliente">
+    <label for="cliente">Nombre: </label>
+    <input type="text" placeholder="cliente" name="nombre" (keyup)="actualizarNombre($event)">
+  </div>
+  <div class="items_orden">
+    <ul class="orden">
+      <li class="detalle_factura">
+        <span>Producto</span>
+        <span>Precio</span>
+        <span>Cantida</span>
+        <span>SubTotal</span>
+      </li>
+      <li></li>
+      <li *ngFor="let item of items">
+        <span>{{item.producto}}</span>
+        <span>{{item.precio}}</span>
+        <span  > 
+          <button class="cantidad" (click)="modificarCantidad('restar',item.id)">-</button>
+           <span>  {{item.cantidad}}  </span> 
+          <button class="cantidad" (click)="modificarCantidad('sumar',item.id)" value="+">+</button></span> 
+        <span>{{item.subtotal}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="total">
+    <span>Total a pagar</span>
+    <span class="neto">{{calcularTotal() | number}}</span>
+  </div>
+  <div class="confirmarOrden">
+    <button  type="button" (click)=confirmarPedido()>Confirmar</button>
+    <button type="button" (click)=cancelarPedido() routerLink="/mesas" routerLinkActive="active">Cancelar</button>
+  </div>
+  <div class="ordenar">
+    <span>Estado:  </span><img src="../../../assets/estadoPedido.svg" alt="pedido">
+  </div>
+</div>

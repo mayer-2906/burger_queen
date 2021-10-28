@@ -1,8 +1,30 @@
-export interface Item{
+//import { INSPECT_MAX_BYTES } from "buffer";
+
+export class Item{
+  id:number;
   producto: string;
   cantidad:number;
   precio: number;
   subtotal: number;
+
+  constructor(cod:number, prod:string, cant:number, precio:number){
+    this.id=cod;
+    this.producto=prod,
+    this.cantidad=cant,
+    this.precio=precio,
+    this.subtotal=this.getSubtotal();
+  }
+  getSubtotal():number{
+    return this.precio*this.cantidad;
+  }
+
+  toObject(){
+    return {producto:this.producto,
+            cantidad:this.cantidad,
+            precio:this.precio
+          }
+  }
+
 }
 
 export interface Order{
