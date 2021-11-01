@@ -14,12 +14,14 @@ import { CocinaComponent } from './cocina/cocina.component';
 //import { BreakfastComponent } from './menu/breakfast/breakfast.component';
 //import { LunchComponent } from './menu/lunch/lunch.component';
 import { MenuModule } from "./menu/menu.module";
+import { OrdenesComponent } from './ordenes/ordenes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MesasComponent,
     CocinaComponent,
+    OrdenesComponent,
     //OrdenComponent,
     //MenuComponent,
     //BreakfastComponent,

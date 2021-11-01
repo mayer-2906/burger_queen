@@ -27,18 +27,38 @@ export class Item{
 
 }
 
-export interface Order{
-  numOrder:number;
+export class Order{
+  numOrder:string;
   numMesa:number;
   cliente: string;
   items: Item[];
   total: number;
   estado: string;
+
+  constructor(numOrder:string,mesa:number,client:string,itemss:Item[],neto:number,stado:string){
+    this.numOrder=numOrder,
+    this.numMesa=mesa,
+    this.cliente=client,
+    this.items=itemss,
+    this.total=neto,
+    this.estado=stado
+  }
+
+  toObject(){
+    return {
+      numOrder:this.numOrder,
+      numMesa:this.numMesa,
+      cliente:this.cliente,
+      items: this.items.map(e=>e.toObject),
+      total: this.total,
+      estado: this.estado
+    }
+  }
 }
 
 export interface Mesa{
   numero: number;
-  orden?: number;
+  orden: string;
   estado: string;
 }
 

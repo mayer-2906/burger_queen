@@ -1,1 +1,38 @@
-<p>cocina works!</p>
+<div class="contenedor_ordenes">
+  <ul class="lista_ordenes" >
+    <li *ngFor="let orden of ordenes |async" >
+      <!--<span *ngIf="orden.estado=='ordenado'">-->
+      <div class="contenedor_orden">
+        <div class="mesa_numOrden">
+          <div class="mesa">
+            <p>Mesa</p>
+            <p>{{orden.numMesa|number}}</p>
+          </div>
+          <div class="numOrden">
+            <p>Pedido</p>
+            <p># {{orden.numOrder| uppercase}}</p>
+          </div>
+        </div>
+        <div class="items_orden">
+          <ul class="orden">
+            <li class="detalle_factura">
+              <span>Producto</span>
+              <span>Cantidad</span>
+            </li>
+            <li></li>
+            <li *ngFor="let item of orden.items">
+              <span>{{item.producto}}</span>
+              <span>  {{item.cantidad}}  </span>
+            </li>
+          </ul>
+        </div>
+        <div class="ordenar">
+          <span>Estado:  </span><span>{{orden.estado}}</span>
+          <button *ngIf="orden.estado=='ordenado'" type="button" (click)="prepararOrden(orden.numOrder)">Preparar</button>
+          <button *ngIf="orden.estado=='en preparación'" type="button" (click)="entregarOrden(orden.numOrder)">Entregar</button>
+        </div>
+      </div>
+    <!--</span>  -->
+    </li>
+  </ul>
+</div>

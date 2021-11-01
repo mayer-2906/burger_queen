@@ -6,7 +6,7 @@
     </div>
     <div class="numOrden">
       <p>Pedido</p>
-      <p># {{numOrden|number}}</p>
+      <p># {{numOrden| uppercase}}</p>
     </div>
   </div>
   <div class="datos_cliente">
@@ -25,7 +25,7 @@
       <li *ngFor="let item of items">
         <span>{{item.producto}}</span>
         <span>{{item.precio}}</span>
-        <span  > 
+        <span> 
           <button class="cantidad" (click)="modificarCantidad('restar',item.id)">-</button>
            <span>  {{item.cantidad}}  </span> 
           <button class="cantidad" (click)="modificarCantidad('sumar',item.id)" value="+">+</button></span> 
@@ -38,7 +38,8 @@
     <span class="neto">{{calcularTotal() | number}}</span>
   </div>
   <div class="confirmarOrden">
-    <button  type="button" (click)=confirmarPedido()>Confirmar</button>
+    <span *ngIf="items.length && nombre.length"><button id="confPed" type="button" (click)=confirmarPedido() routerLink="/mesas">Confirmar</button></span>
+    
     <button type="button" (click)=cancelarPedido() routerLink="/mesas" routerLinkActive="active">Cancelar</button>
   </div>
   <div class="ordenar">

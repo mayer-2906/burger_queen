@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Mesa } from '../interfaces/app.interface'
 import { AppService } from '../services/app.service';
 
@@ -9,23 +11,31 @@ import { AppService } from '../services/app.service';
 })
 export class MesasComponent implements OnInit {
 
-  numPrueba:number=4;
-  mesas:Mesa[];
+  mesas:Observable<Mesa[]>;
+  orden:any;
   constructor(private appService: AppService) {
     this.mesas=this.appService.getMesas();
    }
 
   ngOnInit(): void {
+    //console.log(this.mesas);
+
   }
+
 
   savetable(mesa:number) {
     localStorage.setItem("numMesa",mesa.toString())
      this.appService.actualizarEstadoMesa(mesa);
   }
 
-  consultarOrden(mesa:number){
-    console.log("voy a cosultar la orden");
-    
+  consultarOrden(orden:string){
+    console.log("voy a cosultar la orden: ",orden);
+    this.orden=this.appService.ordenes.pipe(
+      tap(console.log),
+      map((ordenes:any)=>ordenes.filter((orden:any)=> orden.numOrder==orden)),
+      tap(console.log)
+    );
+
   }
 
 }

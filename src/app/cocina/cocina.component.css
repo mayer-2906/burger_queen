@@ -1,0 +1,10 @@
+.lista_ordenes{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  list-style: none;
+}
+
+.items_orden{
+  height: auto;
+}

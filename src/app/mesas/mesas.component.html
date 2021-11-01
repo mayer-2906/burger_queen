@@ -1,13 +1,13 @@
 <div class="contenedor_mesas">
   <ul>
-    <li class="estado" *ngFor="let mesa of  mesas"  >
+    <li class="estado" *ngFor="let mesa of  mesas | async" >
       <p>{{mesa.numero | number}}</p>
       <p>{{mesa.estado | titlecase}}</p>
       <div class="buttonOrden" *ngIf="mesa.estado=='ocupado'">
-        <button (click)="consultarOrden(mesa.numero)">Ver Orden</button>        
+        <button class="verOrder" (click)="consultarOrden(mesa.orden)">Ver Orden</button>
       </div>
       <div class="buttonOrden" *ngIf="mesa.estado=='libre'">
-        <button routerLink="/menu" routerLinkActive="active"  (click)="savetable(mesa.numero)">Ordenar</button>        
+        <button class="ordenar" routerLink="/menu" routerLinkActive="active"  (click)="savetable(mesa.numero)">Ordenar</button>
       </div>
     </li>
   </ul>

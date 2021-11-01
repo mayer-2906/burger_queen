@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Item } from 'src/app/interfaces/app.interface';
 import { AppService } from 'src/app/services/app.service';
 import { Observable } from 'rxjs'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orden',
@@ -11,14 +12,14 @@ import { Observable } from 'rxjs'
 export class OrdenComponent implements OnInit {
 
   mesa:number=0;
-  numOrden:number=0;
+  numOrden:string="";
   nombre:string="";  
   items:Item[];
   total:number=0;
   estado:string='pendiente';
-  validPedido:boolean=false;
+  //validPedido:boolean=false;
 
-  constructor(private service: AppService) { 
+  constructor(private service: AppService, private router:Router) { 
     this.items=service.getItems();
     this.mesa=Number(localStorage.getItem("numMesa"));
     this.numOrden=service.getContadorPedidos();
@@ -40,8 +41,7 @@ export class OrdenComponent implements OnInit {
     } else {
       this.service.agregarOrden(this.mesa,this.nombre,this.items, this.calcularTotal()) 
       this.nombre="";
-      this.validPedido=true;
-      document.location.pathname="/mesas"; 
+      //this.validPedido=true; 
     }    
   }
   

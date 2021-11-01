@@ -4,6 +4,7 @@ import { MesasComponent } from './mesas/mesas.component';
 import { CocinaComponent } from './cocina/cocina.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule, Routes } from '@angular/router';
+import { OrdenesComponent } from './ordenes/ordenes.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
  {
     path: 'cocina',
     component: CocinaComponent
+  },
+  {
+    path: 'ordenes',
+    component: OrdenesComponent
   }
 
 ];

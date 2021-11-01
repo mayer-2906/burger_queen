@@ -43,6 +43,16 @@ li p{
   height: 25px;
   background-color: var(--primary-oscuro);
   color: white;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
   font-style: italic;
+  border-radius: 5px;
+}
+
+.ordenar{
+  border: 3px solid green
+}
+
+.verOrder{
+  border: 3px solid red
 }

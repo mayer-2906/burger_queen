@@ -26,7 +26,7 @@ export class MenuComponent {
   }
 
   itemAgregar(e:any){
-    console.log("estoy en el menu: ",e);
+    //console.log("estoy en el menu: ",e);
     this.codProduct=e;
     this.service.agregarItem(this.codProduct,1);
     
