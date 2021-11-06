@@ -21,9 +21,9 @@ export class BreakfastComponent implements OnInit {
 
   agregarProducto(e:any){
     this.id=e.target.id;
-    this.onEventEmitter.emit(this.id);   
-    console.log(this.id);
-     
+    this.onEventEmitter.emit(this.id);
+    //console.log(this.id);
+
   }
 
 }

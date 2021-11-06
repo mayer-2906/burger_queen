@@ -4,7 +4,7 @@
       <p>{{mesa.numero | number}}</p>
       <p>{{mesa.estado | titlecase}}</p>
       <div class="buttonOrden" *ngIf="mesa.estado=='ocupado'">
-        <button class="verOrder" (click)="consultarOrden(mesa.orden)">Ver Orden</button>
+        <button type="button" class="verOrder" (click)="consultarOrden(mesa.orden)" >Ver Orden</button>
       </div>
       <div class="buttonOrden" *ngIf="mesa.estado=='libre'">
         <button class="ordenar" routerLink="/menu" routerLinkActive="active"  (click)="savetable(mesa.numero)">Ordenar</button>
@@ -12,3 +12,6 @@
     </li>
   </ul>
 </div>
+
+<app-modal *ngIf="verModal==true" (onEventEmitter)=cerrarModal($event)></app-modal>
+

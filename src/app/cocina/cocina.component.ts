@@ -25,7 +25,7 @@ export class CocinaComponent implements OnInit {
 
   prepararOrden(numOrder:string){
     console.log(numOrder);
-    this.service.actualizarEstadoOrden(numOrder, 'en preparación');
+    this.service.actualizarEstadoOrden(numOrder, 'preparando');
     //alert("preparando la orden: "+numOrder)
   }
 

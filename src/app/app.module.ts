@@ -15,6 +15,7 @@ import { CocinaComponent } from './cocina/cocina.component';
 //import { LunchComponent } from './menu/lunch/lunch.component';
 import { MenuModule } from "./menu/menu.module";
 import { OrdenesComponent } from './ordenes/ordenes.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { OrdenesComponent } from './ordenes/ordenes.component';
     MesasComponent,
     CocinaComponent,
     OrdenesComponent,
+    ModalComponent,
     //OrdenComponent,
     //MenuComponent,
     //BreakfastComponent,

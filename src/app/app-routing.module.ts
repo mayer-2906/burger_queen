@@ -5,6 +5,7 @@ import { CocinaComponent } from './cocina/cocina.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule, Routes } from '@angular/router';
 import { OrdenesComponent } from './ordenes/ordenes.component';
+import { ModalComponent } from './modal/modal.component';
 
 const routes: Routes = [
   {
@@ -22,8 +23,11 @@ const routes: Routes = [
   {
     path: 'ordenes',
     component: OrdenesComponent
+  },
+  {
+    path: 'modal',
+    component: ModalComponent
   }
-
 ];
 
 @NgModule({

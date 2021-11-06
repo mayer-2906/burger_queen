@@ -13,6 +13,7 @@ export class MesasComponent implements OnInit {
 
   mesas:Observable<Mesa[]>;
   orden:any;
+  verModal:boolean=false;
   constructor(private appService: AppService) {
     this.mesas=this.appService.getMesas();
    }
@@ -28,14 +29,26 @@ export class MesasComponent implements OnInit {
      this.appService.actualizarEstadoMesa(mesa);
   }
 
-  consultarOrden(orden:string){
-    console.log("voy a cosultar la orden: ",orden);
-    this.orden=this.appService.ordenes.pipe(
-      tap(console.log),
-      map((ordenes:any)=>ordenes.filter((orden:any)=> orden.numOrder==orden)),
-      tap(console.log)
-    );
+  /*consultarOrden(numberOrden:string){
+    console.log("voy a cosultar la orden: ",numberOrden);
+    this.appService.ordenes.subscribe(ordenes=>{
+      ordenes.forEach(orden=>{
+        if(orden.numOrder==numberOrden){
+          this.orden=orden;
+          console.log('soy la orden: ',numberOrden,orden);
+          this.verModal=true;
+        }
+      })
+    })
+  }*/
 
+  consultarOrden(numberOrden:string){
+    localStorage.setItem("orden",numberOrden);
+    this.verModal=true;
+  }
+
+  cerrarModal(opcion:boolean){
+    this.verModal=opcion;
   }
 
 }

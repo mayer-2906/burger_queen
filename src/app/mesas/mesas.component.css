@@ -56,3 +56,8 @@ li p{
 .verOrder{
   border: 3px solid red
 }
+
+.prueba{
+  height: 200px;
+  background-color:var(--primary-claro)
+}
