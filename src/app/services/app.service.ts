@@ -4,10 +4,12 @@ import { doc,
          setDoc,
          getFirestore,
          updateDoc,
+         deleteDoc,
          collection,
          query,
          where,
-         getDocs } from 'firebase/firestore';
+         getDocs,
+         enableIndexedDbPersistence } from 'firebase/firestore';
 import {Observable} from 'rxjs';
 import { map, tap, filter } from 'rxjs/operators';
 import { Mesa, Producto, Item, Order } from '../interfaces/app.interface';
@@ -20,6 +22,7 @@ export class AppService {
   private mesas:Observable<any[]>;
   private breakfast!: Producto[];
   private lunch!: Producto[];
+  private adicionales!:Producto[];
   private items:Item[]=[];
   private pedidos:Observable<any[]>;
   public ordenes:Observable<any[]>;
@@ -32,9 +35,12 @@ export class AppService {
     this.mesas=this.db.collection('mesas').valueChanges();
     this.cargarProductos();
     this.ordenes=this.db.collection('order').valueChanges();
-    this.pedidos=this.db.collection('pedidos').valueChanges();
+    this.pedidos=this.db.collection('facturas').valueChanges();
     this.bd=getFirestore();
+    this.contadorPedidos=this.generateRandomString();
   }
+
+
 
   cargarProductos = () =>{
     fetch("./assets/db/menu.json")
@@ -47,8 +53,13 @@ export class AppService {
       //console.log(data);
       this.breakfast=data.breakFast;
       this.lunch=data.lunch;
+      this.adicionales=data.adicionales;
       //console.log(this.breakfast)
     })
+  }
+
+  getAdicionales() {
+    return this.adicionales;
   }
 
   getBreakFast() {
@@ -77,7 +88,12 @@ export class AppService {
         //console.log(this.items);
       }
       else{
-        newproducto=this.lunch.find(e=>e.codigo==cod);
+        if(cod>12){
+          newproducto=this.adicionales.find(e=>e.codigo==cod)
+        }
+        else{
+          newproducto=this.lunch.find(e=>e.codigo==cod);
+        }
         newItem=new Item(cod,newproducto!.nombre,1,newproducto!.precio);
         this.items.push(newItem);
       }
@@ -105,7 +121,7 @@ export class AppService {
     }
     else{
       const num=this.items.indexOf(itemUpdate);
-      console.log("estoy en la posicion: ",num)
+      //console.log("estoy en la posicion: ",num)
       this.items.splice(num,1);
     }
    }
@@ -114,24 +130,58 @@ export class AppService {
     return this.items;
   }
 
-  actualizarEstadoMesa(numMesa:number){
-    let mesaBuscada:any=this.mesas.pipe(
-      map((mesas)=>mesas.find(mesa=>mesa.numero==numMesa)),
-      tap(console.log),
-      map((mesa)=>mesa.estado=mesaBuscada.estado=='libre'? 'ocupado':'libre'),
-      tap(console.log)
-    )
+  async actualizarEstadoMesa(numMesa:number,estado:string){
+    //let mesaBuscada:any=this.mesas.pipe(
+    //  map((mesas)=>mesas.find(mesa=>mesa.numero==numMesa)),
+    //tap(console.log),
+    //map((mesa)=>mesa.estado=mesaBuscada.estado=='libre'? 'ocupado':'libre'),
+    //tap(console.log)
+    //)
+    let numeroOrden="";
+    if(estado=="ocupado"){
+      numeroOrden=this.contadorPedidos;
+    }
+    const mesa = doc(this.bd, "mesas", '00'+numMesa.toString())
+      await updateDoc(mesa,{
+        estado:estado,
+        orden: numeroOrden
+      })
+      this.contadorPedidos=this.generateRandomString();
+  }
 
-    this.contadorPedidos=this.generateRandomString();
+  pagarOrden(numOrden:string){
+    let newOrden={};
+    this.ordenes.subscribe((ordenes) => {
+      ordenes.forEach(async (orden) => {
+        if (orden.numOrder == numOrden) {
+          newOrden = orden;
+          console.log(newOrden);
+          orden.estado="pagado";
+          //console.log('soy la orden: ',numberOrden,orden);
+          this.actualizarEstadoMesa(orden.numMesa,"libre");
+          await deleteDoc(doc(this.bd, "order", orden.numOrder));
+          setDoc(doc(this.bd, "facturas", numOrden), orden)
+        }
+      });
+    })
+
   }
 
   async actualizarEstadoOrden(numOrden:string, estad:string){
     const orden = doc(this.bd, "order", numOrden);
 
     // Set the "estado" field of the orden con #orden 'numOrden'
-    await updateDoc(orden, {
-      estado: estad
-    });
+    if(estad=="preparado"){
+      await updateDoc(orden, {
+        estado: estad,
+        fechaTerminado:Date.now(),
+      });
+    }
+    else{
+      await updateDoc(orden, {
+        estado: estad,
+      });
+    }
 
   }
 
@@ -152,6 +202,10 @@ export class AppService {
   }
 
   async agregarOrden(numMmesa:number,cliente:string,items:Item[], total: number){
+
+    const hora=Date.now();
+    console.log(typeof(hora));
+
     const newOrder={
       numOrder: this.contadorPedidos,
       numMesa: numMmesa,
@@ -159,15 +213,14 @@ export class AppService {
       items:items.map(item=>item.toObject()),//(items.map(e=>Object.entries(e))).toString(),
       total: total,
       estado: 'ordenado',
+      fecha:hora,
+      fechaTerminado:0,
     }
 
      setDoc(doc(this.bd, "order", this.contadorPedidos), newOrder)
       this.items=[];
-      const mesa = doc(this.bd, "mesas", '00'+numMmesa.toString())
-      await updateDoc(mesa,{
-        estado:'ocupado',
-        orden: this.contadorPedidos
-      })
+      this.actualizarEstadoMesa(numMmesa,"ocupado");
+
   }
 
   consultarEstadoOrden(numberOrden:string){

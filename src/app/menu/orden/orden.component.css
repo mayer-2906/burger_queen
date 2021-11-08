@@ -37,7 +37,7 @@
   display: flex;
   justify-content: space-evenly;
   border-right: 2px solid var(--primary-oscuro);
-  
+
 }
 /*
 .numOrden p{
@@ -45,7 +45,7 @@
   text-align: center;
   font-size: 18px;
   font-weight: bold;
- 
+
 }
 */
 .datos_cliente{
@@ -164,7 +164,7 @@ li span button{
   width: 150px;
   height: 80px;
   background-size: contain;
-  background-color: red;
+  /*background-color: red;*/
   border-radius: 10px;
 }
 

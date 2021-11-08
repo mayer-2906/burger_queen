@@ -9,10 +9,10 @@
     </div>
     <div class="contenedor_menu">
       <app-breakfast *ngIf="showBreakfast"  (onEventEmitter)=itemAgregar($event)></app-breakfast>
-      <app-lunch *ngIf="!showBreakfast"></app-lunch>
+      <app-lunch *ngIf="!showBreakfast"  (onEventEmitter)=itemAgregar2($event)></app-lunch>
       <!--<router-outlet></router-outlet>-->
     </div>
-  </div>    
+  </div>
   <div class="orden">
     <app-orden></app-orden>
   </div>

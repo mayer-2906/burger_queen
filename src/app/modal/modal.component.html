@@ -1,0 +1,57 @@
+<section class="background">
+  <div class="contenedor_modal">
+    <div class="modal-header">
+      <div class="contenedor_orden">
+        <div class="mesa_numOrden">
+          <div class="mesa">
+            <p>Mesa</p>
+            <p>{{orden.numMesa|number}}</p>
+          </div>
+          <div class="numOrden">
+            <p>Pedido</p>
+            <p># {{orden.numOrder| uppercase}}</p>
+          </div>
+          <div class="numOrden">
+            <p>Tiempo Preparación:</p>
+            <p>{{getTime()}}</p>
+          </div>
+        </div>
+        <div class="datos_cliente">
+          <label for="cliente">Nombre: </label>
+          <p>{{orden.cliente|titlecase}}</p>
+        </div>
+        <div class="items_orden">
+          <ul class="orden">
+            <li class="detalle_factura">
+              <span>Producto</span>
+              <span>Precio</span>
+              <span>Cantida</span>
+              <span>SubTotal</span>
+            </li>
+            <li></li>
+            <li *ngFor="let item of orden.items">
+              <span>{{item.producto}}</span>
+              <span>{{item.precio}}</span>
+              <span>  {{item.cantidad}}  </span>
+              <span>{{getSubtotal(item.precio,item.cantidad)}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="total">
+          <span>Total a pagar</span>
+          <span class="neto">{{orden.total | number}}</span>
+        </div>
+        <div class="cerrarOrden">
+          <button id="confPed" type="button" (click)=cerrar() routerLink="/mesas">Cerrar</button>
+          <button id="pagarOrden" type="button" (click)=pagar() routerLink="/mesas">Pagar</button>
+        </div>
+        <div class="ordenar">
+          <span>Estado: {{orden.estado}} </span><img [ngClass]="orden.estado" src="../../../assets/estadoPedido.svg" alt="pedido">
+        </div>
+      </div>
+
+      <button class="close" aria-label="Close" type="button" ></button>
+    </div>
+  </div>
+</section>
+

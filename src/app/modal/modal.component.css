@@ -1,0 +1,48 @@
+.background{
+  background-color: rgba(0, 0, 0, 0.2);
+  width:100%;
+  height: 100vh;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position:absolute;
+  z-index: 100;
+  left:0;
+  top:0;
+}
+
+.contenedor_modal{
+  margin:auto;
+  background-color:rgb(10,16,19,0.7);
+  width:60%;
+  height:fit-content;
+}
+
+.cerrarOrden{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cerrarOrden button{
+  margin: auto;
+  width: 150px;
+  height: 35px;
+  background-color: var(--primary-oscuro);
+  color: white;
+  font-size: 18px;
+  font-weight:600;
+  font-style: italic;
+}
+
+.ordenado{
+  background-color: red;
+}
+
+.preparando{
+  background-color: rgb(250, 246, 28);
+}
+
+.preparado{
+  background-color: rgb(118, 243, 118);
+}
