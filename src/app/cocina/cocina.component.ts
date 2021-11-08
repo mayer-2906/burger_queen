@@ -15,7 +15,7 @@ export class CocinaComponent implements OnInit {
     this.ordenes=this.service.ordenes
     .pipe(
       tap(console.log),
-      map((ordenes:any)=>ordenes.filter((orden:any)=> orden.estado!="preparado")),
+      map((ordenes:any)=>ordenes.filter((orden:any)=> orden.estado!="preparado").sort((a:any,b:any)=>(a.fecha-b.fecha))),
       tap(console.log)
     );
   }

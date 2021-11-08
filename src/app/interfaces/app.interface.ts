@@ -28,6 +28,7 @@ export class Item{
 }
 
 export class Order{
+  fecha: number;
   numOrder:string;
   numMesa:number;
   cliente: string;
@@ -35,13 +36,19 @@ export class Order{
   total: number;
   estado: string;
 
-  constructor(numOrder:string,mesa:number,client:string,itemss:Item[],neto:number,stado:string){
+  constructor(numOrder:string,mesa:number,client:string,itemss:Item[],neto:number,stado:string,fecha:number){
     this.numOrder=numOrder,
     this.numMesa=mesa,
     this.cliente=client,
     this.items=itemss,
     this.total=neto,
-    this.estado=stado
+    this.estado=stado,
+    this.fecha=fecha
+  }
+
+  duracionPreparacion():number{
+    const tiempoTrancurrido=(Date.now()-this.fecha)*1000;
+    return tiempoTrancurrido;
   }
 
   toObject(){

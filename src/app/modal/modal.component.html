@@ -11,6 +11,10 @@
             <p>Pedido</p>
             <p># {{orden.numOrder| uppercase}}</p>
           </div>
+          <div class="numOrden">
+            <p>Tiempo Preparación:</p>
+            <p>{{getTime()}}</p>
+          </div>
         </div>
         <div class="datos_cliente">
           <label for="cliente">Nombre: </label>
@@ -38,7 +42,8 @@
           <span class="neto">{{orden.total | number}}</span>
         </div>
         <div class="cerrarOrden">
-          <button id="confPed" type="button" (click)=cerrar() routerLink="/mesas">cerrar</button>
+          <button id="confPed" type="button" (click)=cerrar() routerLink="/mesas">Cerrar</button>
+          <button id="pagarOrden" type="button" (click)=pagar() routerLink="/mesas">Pagar</button>
         </div>
         <div class="ordenar">
           <span>Estado: {{orden.estado}} </span><img [ngClass]="orden.estado" src="../../../assets/estadoPedido.svg" alt="pedido">

@@ -30,7 +30,7 @@
 .opcion_menu nav{
   display: flex;
   justify-content:flex-start;
-  align-content: center; 
+  align-content: center;
 }
 
 /*.opcion_menu a{
@@ -67,9 +67,10 @@ nav a:hover {
 
 .contenedor_menu{
   margin-top: 10px;
-  height: 100ch;
+  height: 100vh;
   background-color: var(--primary-claro);
   border: 2px solid var(--primary-oscuro);
+  overflow:scroll;
 }
 
 .orden{

@@ -10,7 +10,7 @@ export class MenuComponent {
 
   @Input() numMesa:number=0;
   codProduct:number=0;
-  
+
   showBreakfast:boolean=true;
 
   constructor(private service:AppService) { }
@@ -22,14 +22,20 @@ export class MenuComponent {
       case 'l':this.showBreakfast=false;
                 break;
     }
-    
+
   }
 
   itemAgregar(e:any){
     //console.log("estoy en el menu: ",e);
     this.codProduct=e;
     this.service.agregarItem(this.codProduct,1);
-    
+  }
+
+  itemAgregar2(e:any){
+    //console.log("estoy en el menu: ",e);
+    this.codProduct=e;
+    this.service.agregarItem(this.codProduct,2);
+
   }
 
 }

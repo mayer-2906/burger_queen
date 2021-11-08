@@ -8,3 +8,15 @@
 .items_orden{
   height: auto;
 }
+
+.contenedor_orden{
+  margin-top: 5px;
+  height: 350px;
+  border: 2px solid var(--primary-oscuro);
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  overflow: scroll;
+}
+.ordenar{
+  margin:auto;
+}

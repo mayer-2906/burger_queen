@@ -25,10 +25,13 @@
       <li *ngFor="let item of items">
         <span>{{item.producto}}</span>
         <span>{{item.precio}}</span>
-        <span> 
+        <!--<span *ngIf="item.id>=7 && item.id<=9">
           <button class="cantidad" (click)="modificarCantidad('restar',item.id)">-</button>
-           <span>  {{item.cantidad}}  </span> 
-          <button class="cantidad" (click)="modificarCantidad('sumar',item.id)" value="+">+</button></span> 
+        </span>-->
+        <span>
+          <button class="cantidad" (click)="modificarCantidad('restar',item.id)">-</button>
+           <span>  {{item.cantidad}}  </span>
+          <button class="cantidad" (click)="modificarCantidad('sumar',item.id)" value="+">+</button></span>
         <span>{{item.subtotal}}</span>
       </li>
     </ul>
@@ -39,7 +42,7 @@
   </div>
   <div class="confirmarOrden">
     <span *ngIf="items.length && nombre.length"><button id="confPed" type="button" (click)=confirmarPedido() routerLink="/mesas">Confirmar</button></span>
-    
+
     <button type="button" (click)=cancelarPedido() routerLink="/mesas" routerLinkActive="active">Cancelar</button>
   </div>
   <div class="ordenar">

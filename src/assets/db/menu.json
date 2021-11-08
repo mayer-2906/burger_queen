@@ -41,7 +41,7 @@
       "precio": 3500,
       "descripcion": "botella 1L",
       "imagen": "../../../assets/agua1L.png"
-    }  
+    }
   ],
   "breakFast":[
     {
@@ -86,5 +86,22 @@
       "descripcion": "Delicioso café capuchino.",
       "imagen": "../../../assets/capuchino.jfif"
     }
+  ],
+  "adicionales":[
+    {
+      "codigo":13,
+      "nombre": "papas fritas",
+      "precio": 4500,
+      "descripcion": "deliciosas papás crujientes",
+      "imagen": "../../../assets/papasFritas.png"
+    },
+    {
+      "codigo":14,
+      "nombre": "aros de cebolla",
+      "precio": 5000,
+      "descripcion": "ricos aros de cebolla apanados",
+      "imagen": "../../../assets/arosCebolla.png"
+    }
   ]
+
 }

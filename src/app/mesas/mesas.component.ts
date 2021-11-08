@@ -26,7 +26,7 @@ export class MesasComponent implements OnInit {
 
   savetable(mesa:number) {
     localStorage.setItem("numMesa",mesa.toString())
-     this.appService.actualizarEstadoMesa(mesa);
+     //this.appService.actualizarEstadoMesa(mesa);
   }
 
   /*consultarOrden(numberOrden:string){
