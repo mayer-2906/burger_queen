@@ -25,9 +25,9 @@
       <li *ngFor="let item of items">
         <span>{{item.producto}}</span>
         <span>{{item.precio}}</span>
-        <!--<span *ngIf="item.id>=7 && item.id<=9">
-          <button class="cantidad" (click)="modificarCantidad('restar',item.id)">-</button>
-        </span>-->
+        <span *ngIf="item.id>=7 && item.id<=9">
+          <button class="cantidad" (click)="modificarCantidad('restar',item.id)">Adi</button>
+        </span>
         <span>
           <button class="cantidad" (click)="modificarCantidad('restar',item.id)">-</button>
            <span>  {{item.cantidad}}  </span>

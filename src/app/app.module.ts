@@ -34,7 +34,7 @@ import { ModalComponent } from './modal/modal.component';
     CommonModule,
     ApplicationModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AppRoutingModule,
     MenuModule
   ],
