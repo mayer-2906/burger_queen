@@ -29,10 +29,10 @@ export class CocinaComponent implements OnInit {
     //alert("preparando la orden: "+numOrder)
   }
 
-  entregarOrden(numOrder:string){
+  entregarOrden(numOrder:string,numMesa:number){
     console.log(numOrder);
-    this.service.actualizarEstadoOrden(numOrder, 'preparado');
-    //alert("preparando la orden: "+numOrder)
+    this.service.actualizarEstadoOrden(numOrder,'preparado',numMesa);
+    //alert("la orden de la mesa: "+numOrder+" esta lista para entregar")
   }
 
 }

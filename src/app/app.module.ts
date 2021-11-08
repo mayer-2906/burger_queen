@@ -16,6 +16,8 @@ import { CocinaComponent } from './cocina/cocina.component';
 import { MenuModule } from "./menu/menu.module";
 import { OrdenesComponent } from './ordenes/ordenes.component';
 import { ModalComponent } from './modal/modal.component';
+import { LoginComponent } from './login/login.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ModalComponent } from './modal/modal.component';
     CocinaComponent,
     OrdenesComponent,
     ModalComponent,
+    LoginComponent,
+    UsuariosComponent,
     //OrdenComponent,
     //MenuComponent,
     //BreakfastComponent,

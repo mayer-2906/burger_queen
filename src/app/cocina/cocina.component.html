@@ -29,7 +29,7 @@
         <div class="ordenar">
           <span>Estado:  </span><span>{{orden.estado}}</span>
           <button *ngIf="orden.estado=='ordenado'" type="button" (click)="prepararOrden(orden.numOrder)">Preparar</button>
-          <button *ngIf="orden.estado=='preparando'" type="button" (click)="entregarOrden(orden.numOrder)">Entregar</button>
+          <button *ngIf="orden.estado=='preparando'" type="button" (click)="entregarOrden(orden.numOrder,orden.numMesa)">Entregar</button>
         </div>
       </div>
     <!--</span>  -->

@@ -6,8 +6,14 @@ import { MenuComponent } from './menu/menu.component';
 import { RouterModule, Routes } from '@angular/router';
 import { OrdenesComponent } from './ordenes/ordenes.component';
 import { ModalComponent } from './modal/modal.component';
+import { LoginComponent } from './login/login.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
+  {
+    path: 'usuarios',
+    component: UsuariosComponent
+  },
   {
     path: 'mesas',
     component:MesasComponent
@@ -25,8 +31,8 @@ const routes: Routes = [
     component: OrdenesComponent
   },
   {
-    path: 'modal',
-    component: ModalComponent
+    path: '',
+    component: LoginComponent
   }
 ];
 

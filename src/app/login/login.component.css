@@ -1,0 +1,56 @@
+.contenedor_login{
+  display: grid;
+  height:650px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background-color: var(--primary-claro);
+  /*background-image: url(../../assets/burgerMixtas.png);
+  background-repeat: no-repeat;
+  opacity: 1;*/
+  background-position: center;
+  margin: auto;
+  align-items: center;
+  border: 10px solid rgb(0,0,0,0.3);
+
+}
+
+.bienvenida{
+  grid-column: 1/3;
+  margin: auto;
+  padding: 0;
+}
+
+.logo{
+  grid-column: 1/2;
+  width:70%;
+  margin: auto;
+
+}
+
+.logo img{
+  width: 100%;
+  margin: auto;
+  background-size: cover;
+}
+
+.login{
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginButtons {
+  margin: auto;
+  width: 80%;
+  height: 35px;
+  padding: 5px;
+  margin-top: 20px;
+  background-color: var(--secundary-oscuro);
+  border: 2px solid white;
+  border-radius: 5px;
+  font-size: 18px;
+  color: white;
+}

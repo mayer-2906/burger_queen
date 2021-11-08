@@ -2,7 +2,6 @@ nav {
   display: flex;
   align-content: center;
   height: 40px;
-  background-color: var(--primary-claro);
 }
 
 nav a {

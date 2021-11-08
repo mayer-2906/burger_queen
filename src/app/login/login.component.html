@@ -1,0 +1,18 @@
+
+<div class="contenedor_login">
+  <div class="bienvenida">
+    <h1>BIENVENIDO</h1>
+  </div>
+  <div class="logo">
+    <img src="../../assets/burgerMixtas.png" alt="">
+  </div>
+  <div class="login">
+    <p>Ingresa con tú correo y contraseña</p>
+    <input class="loginButtons" id="logInEmail" type="email" placeholder="Correo electrónico" (keyup)=actualizarCorreo($event) required/>
+    <input class="loginButtons" id="logInPassword" type="password" placeholder="Contraseña" (keyup)=actualizarPassword($event) required/>
+    <button class="loginButtons init" id="logInBtn" type="button" (click)="autenticar()">Iniciar sesión</button>
+  </div>
+</div>
+<div *ngIf="user">
+  <span routerLink="/mesas"></span>
+</div>

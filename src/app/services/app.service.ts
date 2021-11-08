@@ -10,6 +10,7 @@ import { doc,
          where,
          getDocs,
          enableIndexedDbPersistence } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 import {Observable} from 'rxjs';
 import { map, tap, filter } from 'rxjs/operators';
 import { Mesa, Producto, Item, Order } from '../interfaces/app.interface';
@@ -28,6 +29,8 @@ export class AppService {
   public ordenes:Observable<any[]>;
   private contadorPedidos:string="";
   private bd:any;
+  private auth:any;
+  private userValido:boolean=false;
 
   constructor(private db: AngularFirestore){
 
@@ -38,9 +41,28 @@ export class AppService {
     this.pedidos=this.db.collection('facturas').valueChanges();
     this.bd=getFirestore();
     this.contadorPedidos=this.generateRandomString();
+    this.auth=getAuth();
   }
 
+  autenticar(correo: string, password: string) {
+    console.log();
 
+    signInWithEmailAndPassword(this.auth, correo, password)
+    .then((userCredential) => {
+      // Signed in
+      console.log(userCredential.user);
+
+      const user = userCredential.user;
+      this.userValido=true;
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+     // ..
+    });
+    return this.userValido;
+  }
 
   cargarProductos = () =>{
     fetch("./assets/db/menu.json")
@@ -167,7 +189,7 @@ export class AppService {
 
   }
 
-  async actualizarEstadoOrden(numOrden:string, estad:string){
+  async actualizarEstadoOrden(numOrden:string, estad:string,numMesa?:number){
     const orden = doc(this.bd, "order", numOrden);
 
     // Set the "estado" field of the orden con #orden 'numOrden'
@@ -176,6 +198,7 @@ export class AppService {
         estado: estad,
         fechaTerminado:Date.now(),
       });
+      alert("la orden de la mesa: "+numMesa+" esta lista para entregar")
     }
     else{
       await updateDoc(orden, {

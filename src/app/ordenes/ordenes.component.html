@@ -1,3 +1,7 @@
+<nav>
+  <a routerLink="/mesas" routerLinkActive="active" >Mesas</a>
+  <a routerLink="/ordenes" routerLinkActive="active">Ordenes listas</a>
+</nav>
 <ul>
   <li *ngFor="let orden of ordenesListas|async">
     <p>{{orden.numOrder}}</p>
